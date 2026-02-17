@@ -24,7 +24,7 @@ router.get('/:postId', async (req, res) => {
         FROM post_comments pc
         LEFT JOIN user_info ui 
             ON pc.user_id = ui.user_id
-        JOIN users u
+        LEFT JOIN users u
             on u.id = ui.user_id
         WHERE pc.post_id = $2
         ORDER BY pc.created_at DESC;
