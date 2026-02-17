@@ -163,77 +163,86 @@ export default function Chat() {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
-
+    console.log(user)
     return (
-        <>
-            {/* CHAT LIST */}
-            <div className="mt-5 w-96 h-[200px] bg-gray-500 p-4 flex flex-col rounded-lg">
-                <div className="flex justify-between">
-                    <h2>Chats List</h2>
-                    <button
-                        onClick={loadChatlist}
-                        className="bg-blue-200 active:opacity-70 hover:opacity-80 rounded m-1 px-2"
-                    >
-                        LOAD
-                    </button>
-                </div>
-
-                <ul className="flex-1 overflow-y-auto flex flex-col gap-2 pr-2">
-                    {chatsList.map((chat) => (
-                        <li
-                            key={chat.id}
-                            onClick={() => selectChat(chat)}
-                            className={
-                                chat.id === currentChat.id
-                                    ? "w-[90%] bg-blue-200 text-black rounded-lg p-2 cursor-pointer"
-                                    : "w-[90%] bg-gray-200 text-black rounded-lg p-2 cursor-pointer"
-                            }
+        <div className="pl-1.5 flex-col items-center">
+            {user?
+            <>
+                {/* CHAT LIST */}
+                <div className="mt-5 w-96 h-[200px] bg-gray-500 p-4 flex flex-col rounded-lg">
+                    <div className="flex justify-between">
+                        <h2>Chats List</h2>
+                        <button
+                            onClick={loadChatlist}
+                            className="bg-blue-200 active:opacity-70 hover:opacity-80 rounded m-1 px-2"
                         >
-                            {chat.name}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+                            LOAD
+                        </button>
+                    </div>
 
-            {/* CHAT WINDOW */}
-            <div className="mt-10 w-96 h-[500px] bg-gray-400 p-4 flex flex-col rounded-lg">
-
-                <h2 className="mb-2">
-                    {isConnected && currentChat.name
-                        ? `CONNECTED TO: ${currentChat.name || ''} (${onlineCount} online)`
-                        : 'NOT CONNECTED'}
-                </h2>
-
-                {/* MESSAGES */}
-                <ul className="flex-1 overflow-y-auto flex flex-col gap-2 pr-2">
-                    {messages.map((message, index) => (
-                        <ChatTile
-                            key={message.id || index}
-                            message={message}
-                            user={user}
-                        />
-                    ))}
-                    <div ref={bottomRef}></div>
-                </ul>
-
-                {/* INPUT */}
-                <div className="mt-3 flex gap-2">
-                    <input
-                        value={newMessage}
-                        onChange={(e) => setNewMessage(e.target.value)}
-                        type="text"
-                        className="flex-1 p-2 text-black bg-white rounded"
-                        placeholder="Type a message..."
-                    />
-                    <button
-                        onClick={sendMessage}
-                        className="bg-blue-600 text-white px-4 rounded"
-                    >
-                        Send
-                    </button>
+                    <ul className="flex-1 overflow-y-auto flex flex-col gap-2 pr-2">
+                        {chatsList.map((chat) => (
+                            <li
+                                key={chat.id}
+                                onClick={() => selectChat(chat)}
+                                className={
+                                    chat.id === currentChat.id
+                                        ? "w-[90%] bg-blue-200 text-black rounded-lg p-2 cursor-pointer"
+                                        : "w-[90%] bg-gray-200 text-black rounded-lg p-2 cursor-pointer"
+                                }
+                            >
+                                {chat.name}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
-            </div>
-        </>
+                {/* CHAT WINDOW */}
+                <div className="mt-10 w-96 h-[500px] bg-gray-400 p-4 flex flex-col rounded-lg">
+
+                    <h2 className="mb-2">
+                        {isConnected && currentChat.name
+                            ? `CONNECTED TO: ${currentChat.name || ''} (${onlineCount} online)`
+                            : 'NOT CONNECTED'}
+                    </h2>
+
+                    {/* MESSAGES */}
+                    <ul className="flex-1 overflow-y-auto flex flex-col gap-2 pr-2">
+                        {messages.map((message, index) => (
+                            <ChatTile
+                                key={message.id || index}
+                                message={message}
+                                user={user}
+                            />
+                        ))}
+                        <div ref={bottomRef}></div>
+                    </ul>
+
+                    {/* INPUT */}
+                    <div className="mt-3 flex gap-2">
+                        <input
+                            value={newMessage}
+                            onChange={(e) => setNewMessage(e.target.value)}
+                            type="text"
+                            className="flex-1 p-2 text-black bg-white rounded"
+                            placeholder="Type a message..."
+                        />
+                        <button
+                            onClick={sendMessage}
+                            className="bg-blue-600 text-white px-4 rounded"
+                        >
+                            Send
+                        </button>
+                    </div>
+
+                </div>
+            </>
+            :
+            <>
+                <div className="p-20 text-center font-bold text-black">
+                    Log in to chat with friends!
+                </div>
+            </>}
+        </div>
     );
 }
