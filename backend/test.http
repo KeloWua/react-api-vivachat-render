@@ -1,0 +1,83 @@
+###
+GET http://localhost:3000/posts?userId=1
+
+###
+GET http://localhost:3000/comments/56?userId=1
+
+###
+GET http://localhost:3000/chats/userInfo/2
+
+###
+GET http://localhost:3000/posts
+
+###
+GET http://localhost:3000/comments/1
+###
+DELETE http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "postId": 5,
+    "userId": 3
+}
+
+###
+POST http://localhost:3000/comments/like
+Content-Type: application/json
+
+{
+    "commentId": 15,
+    "userId": 2
+}
+
+###
+POST http://localhost:3000/likes
+Content-Type: application/json
+
+{
+    "postId": 1,
+    "userId": 3
+}
+
+###
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "postId": 1,
+    "userId": 2,
+    "commentContent": "Can we have a meeting TODAY?"
+}
+
+
+
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "id": 6,
+    "content": "Este post ha sido enviado desde http test rest",
+    "image": "https://randomuser.me/api/portraits/men/4.jpg"
+}
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "test"
+
+}
+
+
+
+###
+
+  {
+    "id": 1,
+    "first_name": "pepito",
+    "last_name": "guapo",
+    "email": "pepe@test.com",
+  },
