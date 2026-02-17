@@ -5,7 +5,7 @@ const pool = require('../../db/pool');
 
 
 
-router.get('/test', (req, res) => {
+router.get('/', (req, res) => {
     res.json({ ok: true, message: 'API test Funca!!!'})
 });
 

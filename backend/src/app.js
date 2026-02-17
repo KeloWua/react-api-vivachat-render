@@ -7,7 +7,7 @@ const postsRoutes = require('./routes/posts.routes');
 const commentsRoutes = require('./routes/comments.routes');
 const likesRoutes = require('./routes/likes.routes');
 const chatsRoutes = require('./routes/chat/chats.routes');
-const path = require("path");
+const testRoutes = require('./routes/test.routes');
 
 
 
@@ -18,5 +18,7 @@ app.use('/posts', postsRoutes)
 app.use('/comments', commentsRoutes)
 app.use('/likes', likesRoutes)
 app.use('/chats', chatsRoutes)
+app.use('/test', testRoutes)
+
 
 module.exports = app;
