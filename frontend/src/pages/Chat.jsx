@@ -30,6 +30,7 @@ export default function Chat() {
     const loadChatlist = async () => {
         try {
             const lists = await chatList();
+            if (!lists) return;
             setChatsList(lists);
         } catch (err) {
             console.error(err);

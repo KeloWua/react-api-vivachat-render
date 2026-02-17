@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { AiOutlineHeart, AiFillHeart, AiOutlineComment, AiOutlineShareAlt, AiFillDelete  } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart, AiOutlineComment, AiOutlineShareAlt, AiFillDelete } from "react-icons/ai";
 import { getPosts, sendPost, deletePosts } from "../services/posts";
 import { useAuth } from '../../context/AuthContext'
 import { timeAgo } from "../services/timeAgo";
@@ -90,9 +90,9 @@ const Home = () => {
     setPosts(posts)
   };
   useEffect(() => {
-    if (!user) return; // ⚠️ evita crash si user no está cargado
+    if (!user) return;
     handleGetPosts(user.id);
-  }, [user, posts]);
+  }, [user]);
 
 
 
@@ -230,15 +230,15 @@ const Home = () => {
                               <AiOutlineShareAlt className="w-6 h-6" />
                               <span>Share</span>
                             </button>
-                            
-                            { post.user.id === user.id?
 
-                            <button onClick={() => handleDeletePost(post.id)}
-                            className="flex items-center space-x-2 text-gray-500 hover:text-blue-500">
-                              <AiFillDelete  className="w-6 h-6" />
-                            </button>
-                            :
-                            ''
+                            {post.user.id === user.id ?
+
+                              <button onClick={() => handleDeletePost(post.id)}
+                                className="flex items-center space-x-2 text-gray-500 hover:text-blue-500">
+                                <AiFillDelete className="w-6 h-6" />
+                              </button>
+                              :
+                              ''
                             }
                           </div>
                         </article>

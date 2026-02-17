@@ -31,7 +31,7 @@ router.get('/lists', async (req, res) => {
             "SELECT * FROM chats"
         );
         if (!rows.length) {
-            return res.status(400).json('No chats available')
+            return res.status(400).json([])
         }
         return res.status(200).json(
             rows.map(list => ({
