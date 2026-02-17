@@ -1,12 +1,13 @@
-import { registerFormValidator, loginFormValidator } from './userFormValidator' 
+import { BASE_URL } from "../config.js";
 
+import { registerFormValidator, loginFormValidator } from './userFormValidator' 
 
 
 
 export async function register (firstName,lastName,email,password) {
     
     await registerFormValidator(firstName, lastName, email, password)
-    const res = await fetch('http://localhost:3000/users/register', {
+    const res = await fetch(`${BASE_URL}/users/register`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -29,7 +30,7 @@ export async function register (firstName,lastName,email,password) {
 export async function login (email,password) {
     
     await loginFormValidator(email, password)
-    const res = await fetch('http://localhost:3000/users/login', {
+    const res = await fetch(`${BASE_URL}/users/login`, {
         headers: {
             "Content-Type": "application/json"
         },

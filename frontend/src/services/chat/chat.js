@@ -1,6 +1,8 @@
+import { BASE_URL } from "../../config.js";
+
 export async function chat(chatId, userId, message) {
 
-    const res = await fetch('http://localhost:3000/chats', {
+    const res = await fetch(`${BASE_URL}/chats`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -17,7 +19,7 @@ export async function chat(chatId, userId, message) {
 
 export async function chatList() {
 
-    const res = await fetch('http://localhost:3000/chats/lists');
+    const res = await fetch(`${BASE_URL}/chats/lists`);
     const data = await res.json();
     return data;
 };
@@ -25,14 +27,14 @@ export async function chatList() {
 
 export async function chatMessages(chatId) {
 
-    const res = await fetch(`http://localhost:3000/chats/${chatId}`);
+    const res = await fetch(`${BASE_URL}/chats/${chatId}`);
     const data = await res.json();
     return data;
 };
 
 export async function getUserAvatar(userId) {
     
-    const res = await fetch(`http://localhost:3000/chats/userInfo/${userId}`);
+    const res = await fetch(`${BASE_URL}/chats/userInfo/${userId}`);
     const data = await res.json();
     return data;
 }

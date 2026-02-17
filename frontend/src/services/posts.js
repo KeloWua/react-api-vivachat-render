@@ -1,7 +1,9 @@
+import { BASE_URL } from "../config.js";
 
 export async function getPosts(userId) {
 
-    const res = await fetch(`http://localhost:3000/posts?userId=${userId}`);
+    const res = await fetch(`${BASE_URL}
+/posts?userId=${userId}`);
     const { posts } = await res.json();
     if (!res.ok) throw new Error(res.statusText);
     return posts;
@@ -11,7 +13,8 @@ export async function getPosts(userId) {
 export async function deletePosts(postId, userId) {
     console.log(postId, userId)
 
-    const res = await fetch(`http://localhost:3000/posts`, {
+    const res = await fetch(`${BASE_URL}
+/posts`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -28,7 +31,8 @@ export async function deletePosts(postId, userId) {
 
 export async function sendPost(post) {
     const { userId, contentPost, contentImg } = post;
-    const res = await fetch('http://localhost:3000/posts', {
+    const res = await fetch(`${BASE_URL}
+/posts`, {
         headers: {
             "Content-Type": "application/json"
         },

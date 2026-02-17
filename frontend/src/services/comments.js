@@ -1,6 +1,9 @@
+import { BASE_URL } from "../config.js";
+
+
 
 export async function getCommentsByPost(postId, userId) {
-    const res = await fetch(`http://localhost:3000/comments/${postId}?userId=${userId}`);
+    const res = await fetch(`${BASE_URL}/comments/${postId}?userId=${userId}`);
     if (!res.ok) throw new Error(res.statusText);
 
     const { postComments } = await res.json();
@@ -11,7 +14,7 @@ export async function getCommentsByPost(postId, userId) {
 
 export async function postComment(comment) {
     const {postId, userId, commentContent} = comment;
-    const res = await fetch('http://localhost:3000/comments', {
+    const res = await fetch(`${BASE_URL}/comments`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -27,7 +30,7 @@ export async function postComment(comment) {
 }
 
 export async function deleteComment(commentId) {
-    const res = await fetch(`http://localhost:3000/comments/${commentId}`, {
+    const res = await fetch(`${BASE_URL}/comments/${commentId}`, {
         headers: {
             "Content-Type": "application/json"
         },
@@ -39,7 +42,7 @@ export async function deleteComment(commentId) {
 
 
 export async function likeComment(commentId, userId) {
-    const res = await fetch('http://localhost:3000/comments/like', {
+    const res = await fetch(`${BASE_URL}/comments/like`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
