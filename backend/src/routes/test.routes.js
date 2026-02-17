@@ -9,10 +9,5 @@ router.get('/', (req, res) => {
     res.json({ ok: true, message: 'API test Funca!!!'})
 });
 
-router.post('/', (req, res) => {
-    const { body } = req;
-    console.log(body)
-    res.json(body);
-});
 
 module.exports = router

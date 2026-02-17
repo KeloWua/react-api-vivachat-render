@@ -9,7 +9,6 @@ import { useState } from "react";
 export default function CommentTile({ postComment, onDeleteComment }) {
     const { user } = useAuth();
     const [comment, setComment] = useState(postComment);
-    console.log(comment)
     const [likeCooldown, setLikeCooldown] = useState({});
     const userId = user.id;
     const handleDelete = async () => {

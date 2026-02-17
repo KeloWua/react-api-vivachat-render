@@ -11,7 +11,6 @@ export async function getPosts(userId) {
 
 
 export async function deletePosts(postId, userId) {
-    console.log(postId, userId)
 
     const res = await fetch(`${BASE_URL}
 /posts`, {
